@@ -25,7 +25,7 @@ jobs:
       - run: |
           export SEMGREP_REPO_NAME='beehive-RG'  
           semgrep ci --include='projects/beehive-RG/*'
-          export SEMGREP_REPO_NAME='beehive-RGB 
+          export SEMGREP_REPO_NAME='beehive-RGB'
           semgrep ci --include='projects/beehive-RGB/*'
         env:
           SEMGREP_APP_TOKEN: ${{ secrets.SEMGREP_APP_TOKEN }}

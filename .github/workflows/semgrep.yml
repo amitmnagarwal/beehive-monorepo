@@ -1,0 +1,31 @@
+name: Resuable workflow with Semgrep
+
+on:
+  push:
+  workflow_call:
+   secrets:
+      SEMGREP_APP_TOKEN:
+       required: true
+
+jobs:
+  semgrep:
+    # User definable name of this GitHub Actions job.
+    name: sast
+    # If you are self-hosting, change the following `runs-on` value: 
+    runs-on: ubuntu-latest
+
+    container:
+      # A Docker image with Semgrep installed. Do not change this.
+      image: returntocorp/semgrep
+
+    steps:
+      # Fetch project source with GitHub Actions Checkout.
+      - uses: actions/checkout@v3
+      # Run the "semgrep ci" command on the command line of the docker image.
+      - run: |
+          export SEMGREP_REPO_NAME='beehive-RG'  
+          semgrep ci -include='projects/beehive-RG/*'
+          export SEMGREP_REPO_NAME='beehive-RGB 
+          semgrep ci -include='projects/beehive-RGB/*'
+        env:
+          SEMGREP_APP_TOKEN: ${{ secrets.SEMGREP_APP_TOKEN }}

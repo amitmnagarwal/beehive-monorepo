@@ -2,6 +2,7 @@ name: Resuable workflow with Semgrep
 
 on:
   push:
+  pull_request:
   workflow_call:
    secrets:
       SEMGREP_APP_TOKEN:

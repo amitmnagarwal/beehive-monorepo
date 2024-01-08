@@ -1,5 +1,4 @@
 name: Resuable workflow with Semgrep
-
 on:
   push:
   pull_request:

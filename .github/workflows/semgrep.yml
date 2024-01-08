@@ -24,13 +24,25 @@ jobs:
       # Run the "semgrep ci" command on the command line of the docker image.
       - run: |
           # Apps using beehive-RG
-          export SEMGREP_REPO_NAME='beehive-RG'  
-          semgrep ci --include='projects/beehive-RG/*'
-          export SEMGREP_REPO_NAME='beehive-RGB'
-          semgrep ci --include='projects/beehive-RGB/*'
+          # export SEMGREP_REPO_NAME='beehive-RG'  
+          # semgrep ci --include='projects/beehive-RG/*'
+          # export SEMGREP_REPO_NAME='beehive-RGB'
+          # semgrep ci --include='projects/beehive-RGB/*'
 
-          #beehive-monorepo
-          export SEMGREP_REPO_NAME='beehive-monorepo'
-          semgrep ci --exclude='projects/*'
+          # #beehive-monorepo
+          # export SEMGREP_REPO_NAME='beehive-monorepo'
+          # semgrep ci --exclude='projects/*'
+          
+          export SEMGREP_REPO_NAME='beehive-RG'  
+          #Updated 
+          if [[ "$SEMGREP_REPO_NAME" == "beehive-monorepo" ]]; 
+          then  
+             echo "beehive-monorepo"
+             semgrep ci --exclude='projects/*'
+          else
+             echo "beehive- project repos   projects/${SEMGREP_REPO_NAME}/*"
+             semgrep ci --include="projects/${SEMGREP_REPO_NAME}/*"
+          fi
+          
         env:
           SEMGREP_APP_TOKEN: ${{ secrets.SEMGREP_APP_TOKEN }}

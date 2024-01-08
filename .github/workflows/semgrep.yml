@@ -23,7 +23,7 @@ jobs:
       - uses: actions/checkout@v3
       # Run the "semgrep ci" command on the command line of the docker image.
       - run: |
-          # Apps using beehive-monorepo
+          # Apps using beehive-RG
           export SEMGREP_REPO_NAME='beehive-RG'  
           semgrep ci --include='projects/beehive-RG/*'
           export SEMGREP_REPO_NAME='beehive-RGB'

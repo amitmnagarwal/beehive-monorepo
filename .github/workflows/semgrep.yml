@@ -33,9 +33,21 @@ jobs:
           # export SEMGREP_REPO_NAME='beehive-monorepo'
           # semgrep ci --exclude='projects/*'
           
-          export SEMGREP_REPO_NAME='beehive-RG'  
+          # export SEMGREP_REPO_NAME='beehive-RG'  
+          # #Updated 
+          # if [[ "$SEMGREP_REPO_NAME" == "beehive-monorepo" ]]; 
+          # then  
+          #    echo "beehive-monorepo"
+          #    semgrep ci --exclude='projects/*'
+          # else
+          #    echo "beehive- project repos   projects/${SEMGREP_REPO_NAME}/*"
+          #    semgrep ci --include="projects/${SEMGREP_REPO_NAME}/*"
+          # fi
+
+          export SEMGREP_REPO_NAME='${{ vars.APP_NAME }}'
+          echo $SEMGREP_REPO_NAME
           #Updated 
-          if [[ "$SEMGREP_REPO_NAME" == "beehive-monorepo" ]]; 
+          if [[ $SEMGREP_REPO_NAME == 'beehive-monorepo' ]]; 
           then  
              echo "beehive-monorepo"
              semgrep ci --exclude='projects/*'
@@ -43,6 +55,7 @@ jobs:
              echo "beehive- project repos   projects/${SEMGREP_REPO_NAME}/*"
              semgrep ci --include="projects/${SEMGREP_REPO_NAME}/*"
           fi
+         
           
         env:
           SEMGREP_APP_TOKEN: ${{ secrets.SEMGREP_APP_TOKEN }}

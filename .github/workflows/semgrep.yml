@@ -44,13 +44,14 @@ jobs:
           #    semgrep ci --include="projects/${SEMGREP_REPO_NAME}/*"
           # fi
 
-          export SEMGREP_REPO_NAME='${{ vars.APP_NAME }}'
+        #  export SEMGREP_REPO_NAME='${{ vars.APP_NAME }}'
           echo $SEMGREP_REPO_NAME
           #Updated this corresponds to Onyx - platform code 
+          export SEMGREP_REPO_NAME='beehive-monorepo'
           if [[ $SEMGREP_REPO_NAME == 'beehive-monorepo' ]]; 
           then  
              echo "beehive-monorepo"
-             semgrep ci --exclude='projects/*' --include='projects/beehive-RG'	
+             semgrep ci --exclude='projects/*' --include='projects/beehive-RGB'	
           else 
             # this corresponds to onyx - apps code 
              echo "beehive- project repos   projects/${SEMGREP_REPO_NAME}/*"

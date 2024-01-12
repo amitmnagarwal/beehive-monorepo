@@ -51,11 +51,11 @@ jobs:
             if [[ $SEMGREP_REPO_NAME == 'beehive-monorepo' ]]; 
             then  
                echo "beehive-monorepo"
-               semgrep ci --exclude='projects/*' --include='projects/beehive-RGB'	
+               semgrep ci --exclude='projects/*' --include='projects/beehive-RGB'	--verbose
             else 
               # this corresponds to onyx - apps code 
                echo "beehive- project repos   projects/${SEMGREP_REPO_NAME}/*"
-               semgrep ci --include="projects/${SEMGREP_REPO_NAME}/*"            
+               semgrep ci --include="projects/${SEMGREP_REPO_NAME}/*" --verbose            
             fi
                    
         env:
